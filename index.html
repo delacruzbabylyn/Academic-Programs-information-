@@ -211,39 +211,55 @@ section { padding: 55px 7%; }
     margin-bottom: 10px;
 }
 
-/* COURSE DETAILS */
+/* COURSE DETAILS - MAS DETALYADO */
 #courseDetails {
     display: none;
     background: #eaf1fb;
+    padding-top: 40px;
+    padding-bottom: 50px;
 }
 
 .detail-box {
     background: white;
-    max-width: 900px;
-    padding: 30px;
+    max-width: 920px;
+    padding: 35px 40px;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .detail-box h2 {
     color: #123d73;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
+    font-size: 28px;
+}
+
+.detail-box .program-duration {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 20px;
 }
 
 .detail-box h3 {
     color: #123d73;
-    margin: 22px 0 8px;
-    border-bottom: 2px solid #e5efff;
-    padding-bottom: 5px;
+    margin: 28px 0 12px;
+    font-size: 18px;
+    border-left: 5px solid #123d73;
+    padding-left: 12px;
+}
+
+.detail-box p {
+    margin-bottom: 12px;
+    text-align: justify;
 }
 
 .detail-box ul {
-    margin-left: 20px;
-    margin-bottom: 10px;
+    margin-left: 22px;
+    margin-bottom: 8px;
 }
 
 .detail-box li {
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
 .close-btn {
@@ -251,9 +267,14 @@ section { padding: 55px 7%; }
     border: none;
     background: #b83232;
     color: white;
-    padding: 8px 14px;
+    padding: 9px 16px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 14px;
+}
+
+.close-btn:hover {
+    background: #9c2a2a;
 }
 
 /* CONTACT */
@@ -280,6 +301,9 @@ footer {
     }
     nav { justify-content: center; }
     section { padding: 40px 5%; }
+    .detail-box {
+        padding: 25px 20px;
+    }
 }
 </style>
 </head>
@@ -320,8 +344,8 @@ footer {
         activities related to their chosen courses.
     </p>
     <p>
-        Students can browse detailed program descriptions, career paths,
-        sample subjects, and educational activities.
+        Click <strong>View Information</strong> on any program to see detailed
+        overview, career paths, subjects, skills, and activities.
     </p>
 </section>
 
@@ -329,8 +353,8 @@ footer {
 <section id="courses">
     <h2 class="section-title">Academic Programs</h2>
     <p class="section-description">
-        Explore the program categories below. Confirm the actual course
-        offerings with ICCBI before making any final decisions.
+        Explore the program categories below. Click <strong>View Information</strong>
+        to see complete details. Confirm actual offerings with ICCBI.
     </p>
 
     <input type="text" id="searchInput" class="search-box"
@@ -426,12 +450,13 @@ footer {
     </p>
 </section>
 
-<!-- COURSE DETAILS -->
+<!-- COURSE DETAILS (MAS DETALYADO) -->
 <section id="courseDetails">
     <div class="detail-box">
         <button class="close-btn" onclick="closeDetails()">Close</button>
 
         <h2 id="detailTitle"></h2>
+        <p class="program-duration" id="detailDuration"></p>
 
         <h3>Program Overview</h3>
         <p id="detailDescription"></p>
@@ -442,12 +467,15 @@ footer {
         <h3>Sample Core Subjects</h3>
         <ul id="detailSubjects"></ul>
 
+        <h3>Skills You Will Gain</h3>
+        <ul id="detailSkills"></ul>
+
         <h3>Possible Student Activities</h3>
         <ul id="detailActivities"></ul>
 
-        <p style="margin-top:20px; font-size:13px; color:#666;">
+        <p style="margin-top:25px; font-size:13px; color:#666; border-top:1px solid #eee; padding-top:15px;">
             Note: Information provided here is for educational/sample purposes only.
-            Please verify actual program offerings, curriculum, and activities with ICCBI.
+            Please verify actual program offerings, curriculum, duration, and activities with ICCBI.
         </p>
     </div>
 </section>
@@ -523,55 +551,71 @@ footer {
 <script>
 const courses = {
     "BS Computer Science": {
-        description: "The Bachelor of Science in Computer Science program provides students with a strong foundation in computing theory, programming, algorithms, data structures, software engineering, and systems design. Students learn how to analyze problems, design efficient solutions, and develop reliable software applications. The program also introduces emerging technologies such as artificial intelligence, cybersecurity, and data science.",
+        duration: "4 Years (Bachelor's Degree)",
+        description: "The Bachelor of Science in Computer Science program provides students with a strong foundation in computing theory, programming, algorithms, data structures, software engineering, and systems design. Students learn how to analyze complex problems, design efficient solutions, and develop reliable software applications. The program also introduces emerging technologies such as artificial intelligence, cybersecurity, cloud computing, and data science. Graduates are prepared for careers in software development, systems analysis, and various technology-related fields.",
         careers: [
             "Software Developer / Programmer",
             "Systems Analyst",
-            "Web Developer",
+            "Web Developer / Full-Stack Developer",
             "Database Administrator",
-            "IT Support Specialist",
-            "Quality Assurance Engineer",
-            "Mobile Application Developer"
+            "IT Support Specialist / Technical Support",
+            "Quality Assurance (QA) Engineer",
+            "Mobile Application Developer",
+            "Network Administrator",
+            "Cybersecurity Analyst (entry-level)",
+            "IT Project Coordinator"
         ],
         subjects: [
             "Introduction to Computing",
-            "Computer Programming (C++/Java/Python)",
+            "Computer Programming (C++ / Java / Python)",
             "Data Structures and Algorithms",
             "Object-Oriented Programming",
             "Database Management Systems",
             "Software Engineering",
             "Operating Systems",
             "Computer Networks",
-            "Web Development",
-            "Discrete Mathematics"
+            "Web Systems and Technologies",
+            "Discrete Mathematics",
+            "Information Assurance and Security",
+            "Capstone Project / Thesis"
+        ],
+        skills: [
+            "Proficiency in multiple programming languages",
+            "Problem-solving and logical thinking",
+            "Software design and development",
+            "Database design and management",
+            "Team collaboration and project management",
+            "Technical documentation and communication"
         ],
         activities: [
-            "Programming Workshop",
+            "Programming Workshop / Coding Bootcamp",
             "Software Development Project",
             "Coding Competition / Hackathon",
-            "Technology Seminar",
+            "Technology Seminar / Tech Talk",
             "Database Design Activity",
-            "Capstone Project Presentation"
+            "Capstone Project Presentation",
+            "IT Skills Exhibition"
         ]
     },
 
     "BS Accountancy": {
-        description: "The Bachelor of Science in Accountancy (BSA) is a professional program designed to prepare students for careers in accounting, auditing, taxation, and financial management. The curriculum emphasizes financial accounting and reporting, cost and management accounting, auditing theory and practice, taxation, and business law. Students develop analytical skills, ethical judgment, and technical competence needed to become Certified Public Accountants (CPAs) and responsible accounting professionals. The program aims to produce graduates who can work in public accounting firms, private corporations, government agencies, and educational institutions.",
+        duration: "4 Years (Bachelor's Degree) – Prepares for CPA Licensure Examination",
+        description: "The Bachelor of Science in Accountancy (BSA) is a rigorous professional program designed to prepare students for careers in accounting, auditing, taxation, and financial management. The curriculum places strong emphasis on financial accounting and reporting, cost and management accounting, auditing theory and practice, taxation, business law, and professional ethics. Students develop analytical skills, ethical judgment, attention to detail, and technical competence required of future Certified Public Accountants (CPAs). Graduates may work in public accounting firms, private corporations, government agencies, banking institutions, or pursue careers in education and consultancy.",
         careers: [
             "Certified Public Accountant (CPA)",
-            "External / Internal Auditor",
+            "External Auditor / Internal Auditor",
             "Tax Accountant / Tax Consultant",
-            "Management Accountant",
-            "Financial Analyst",
-            "Cost Accountant",
-            "Accounting Supervisor / Manager",
-            "Bookkeeper / Accounting Staff",
-            "Government Accountant",
-            "Accounting Educator"
+            "Management Accountant / Cost Accountant",
+            "Financial Analyst / Financial Controller",
+            "Accounting Supervisor / Accounting Manager",
+            "Bookkeeper / General Accountant",
+            "Government Accountant (COA, BIR, LGU)",
+            "Accounting Educator / Reviewer",
+            "Forensic Accountant (with further training)"
         ],
         subjects: [
             "Financial Accounting and Reporting",
-            "Advanced Financial Accounting",
+            "Advanced Financial Accounting and Reporting",
             "Cost Accounting and Control",
             "Management Accounting",
             "Auditing and Assurance Principles",
@@ -581,58 +625,21 @@ const courses = {
             "Regulatory Framework and Legal Issues in Business",
             "Accounting Information System",
             "Strategic Business Analysis",
-            "Professional Ethics and Governance"
+            "Professional Ethics, Governance, and Business Law",
+            "Accounting Research / Practical Accounting"
+        ],
+        skills: [
+            "Preparation and analysis of financial statements",
+            "Understanding of taxation rules and compliance",
+            "Auditing procedures and internal control evaluation",
+            "Cost analysis and managerial decision support",
+            "Ethical reasoning and professional judgment",
+            "Attention to detail and accuracy in numerical work",
+            "Use of accounting software and information systems"
         ],
         activities: [
             "Financial Statement Preparation Workshop",
-            "Taxation Seminar / Tax Clinic",
-            "Auditing Simulation / Case Study",
+            "Taxation Seminar / Free Tax Clinic",
+            "Auditing Simulation and Case Study",
             "Cost Accounting Problem-Solving Session",
-            "Accounting Quiz Bowl / Inter-school Competition",
-            "Professional Ethics Forum",
-            "Mock Board Examination",
-            "Industry Immersion / Accounting Firm Visit"
-        ]
-    },
-
-    "BS Business Administration": {
-        description: "The Bachelor of Science in Business Administration program equips students with knowledge and skills in management, marketing, finance, human resource management, and entrepreneurship. Students learn how organizations operate, how to make sound business decisions, and how to lead teams effectively. The program develops critical thinking, communication, and leadership abilities needed in today’s competitive business environment. Graduates may specialize in areas such as Marketing Management, Financial Management, Human Resource Management, or Operations Management depending on the school’s offerings.",
-        careers: [
-            "Business Manager / Supervisor",
-            "Marketing Officer / Specialist",
-            "Human Resource Staff / Officer",
-            "Sales Representative / Account Executive",
-            "Entrepreneur / Business Owner",
-            "Financial Analyst",
-            "Operations Supervisor",
-            "Customer Service Manager",
-            "Administrative Officer",
-            "Business Consultant"
-        ],
-        subjects: [
-            "Principles of Management",
-            "Marketing Management",
-            "Financial Management",
-            "Human Resource Management",
-            "Business Communication",
-            "Entrepreneurship",
-            "Business Law and Taxation",
-            "Operations Management",
-            "Strategic Management",
-            "Business Research",
-            "Organizational Behavior",
-            "Economics"
-        ],
-        activities: [
-            "Entrepreneurship Seminar",
-            "Business Plan Presentation",
-            "Marketing Workshop / Product Launch",
-            "Product Exhibit / Trade Fair",
-            "Leadership Training",
-            "Business Case Competition",
-            "Industry Talk / Guest Speaker Series"
-        ]
-    },
-
-    "Education Programs": {
-        description: "The Education programs (Bachelor of Elementary Education – BEEd and Bachelor of Secondary Education – BSEd) prepare future teachers who are competent, committed, and values-oriented. Students learn pedagogical theor
+            "Accounting Q
